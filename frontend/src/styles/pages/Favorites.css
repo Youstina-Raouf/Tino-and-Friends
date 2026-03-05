@@ -1,0 +1,76 @@
+/* Favorites Page Styles */
+.favorites-page {
+  min-height: 100vh;
+  background: #faf8f3;
+  padding: 2rem;
+}
+
+.favorites-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.favorites-container h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.not-logged-in,
+.empty-favorites {
+  background: white;
+  padding: 4rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 3rem auto;
+}
+
+.not-logged-in h2,
+.empty-favorites h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.not-logged-in p,
+.empty-favorites p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.login-link,
+.shop-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #d4a574;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.login-link:hover,
+.shop-link:hover {
+  background: #8b6f47;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+}

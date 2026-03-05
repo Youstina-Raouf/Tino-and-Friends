@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #faf8f3;
+  color: #333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Bakery Theme Colors */
+:root {
+  --primary-color: #d4a574; /* warm gold */
+  --secondary-color: #8b6f47; /* warm brown */
+  --accent-color: #c41e3a; /* burgundy red */
+  --light-bg: #faf8f3; /* off white */
+  --dark-text: #333;
+}
