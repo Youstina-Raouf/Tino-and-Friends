@@ -1,268 +1,79 @@
-// Seed database with sample products
+// Seed database with real Tino and Friends Menu - Complete Catalog
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
 const connectDB = require('../config/database');
 
-// Sample products data
 const sampleProducts = [
-  // Pastries
-  {
-    name: 'Croissant',
-    description: 'Buttery, flaky French pastry perfect for breakfast',
-    price: 4.99,
-    category: 'Pastries',
-    image: 'https://images.unsplash.com/photo-1585267360226-c684b42af31e?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.8,
-  },
-  {
-    name: 'Pain au Chocolat',
-    description: 'Chocolate-filled pastry with crispy layers',
-    price: 5.49,
-    category: 'Pastries',
-    image: 'https://images.unsplash.com/photo-1571877227200-a0fb08ceae1d?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.9,
-  },
-  {
-    name: 'Danish Pastry',
-    description: 'Sweet twisted pastry with jam filling',
-    price: 4.49,
-    category: 'Pastries',
-    image: 'https://images.unsplash.com/photo-1608039891193-66d9c6d3e58e?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.6,
-  },
-  {
-    name: 'Almond Croissant',
-    description: 'Croissant topped with sliced almonds and cream',
-    price: 350.00,
-    category: 'Pastries',
-    image: '/images/almond_croissant.png',
-    available: true,
-    rating: 4.7,
-  },
-  {
-    name: 'Éclair',
-    description: 'Chocolate-covered choux pastry filled with cream',
-    price: 300.00,
-    category: 'Pastries',
-    image: 'https://images.unsplash.com/photo-1571326491601-6d0c5f69b0d2?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.8,
-  },
+  // VIENNOISERIE
+  { name: 'Butter Croissant', description: 'Classic French buttery and flaky croissant', price: 90, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Zaatar Labneh Croissant', description: 'Croissant filled with traditional zaatar and creamy labneh', price: 100, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Mix Cheese Croissant', description: 'Gourmet blend of artisan cheeses in flaky puff pastry', price: 120, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Crookie', description: 'Cookie-croissant hybrid with chocolate core', price: 150, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Almond Croissant', description: 'Bestseller: Double baked croissant with almond cream', price: 120, category: 'Viennoiserie', image: '/images/almond_croissant.png', available: true },
+  { name: 'Raspberry Croissant', description: 'Sweet raspberry preserve filled pastry', price: 160, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Pain Pastrami & Do2a', description: 'Savory pastry with pastrami and traditional spices', price: 150, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Pain Salami & Roasted Pepper', description: 'Italian salami and sweet peppers in puff pastry', price: 150, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Pain Au Turkey', description: 'Artisanal pastry filled with premium turkey slices', price: 120, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Pain Au Beef Bacon', description: 'Smoky beef bacon wrapped in buttery pastry layers', price: 120, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Pain Suisse', description: 'Cream and chocolate chips in a rectangular pastry', price: 130, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop', available: true },
+  { name: 'Cheesecake Danish Mix Berries', description: 'Danish pastry with cheesecake filling and forest berries', price: 180, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1608039891193-66d9c6d3e58e?w=500&h=500&fit=crop', available: true },
+  { name: 'Gianduja Cruffin', description: 'Croissant-muffin hybrid with hazelnut gianduja', price: 150, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&h=500&fit=crop', available: true },
+  { name: 'Pistachio Kunafa Croissant - Milk', description: 'Fusion: Milky pistachio cream and kunafa topping', price: 180, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Pistachio Kunafa Croissant - Dark', description: 'Fusion: Dark chocolate pistachio and kunafa topping', price: 180, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1549437115-46f04d026330?w=500&h=500&fit=crop', available: true },
+  { name: 'Custard Croissant', description: 'Silky smooth custard cream filling', price: 120, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Mordjene Croissant', description: 'Signature pastry with rich decadent filling', price: 180, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&h=500&fit=crop', available: true },
+  { name: 'Cinnamon Roll', description: 'Spiced cinnamon sugar spiral with glaze', price: 150, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1596592211029-b8e5566f0b92?w=500&h=500&fit=crop', available: true },
+  { name: 'Flan', description: 'Traditional creamy custard tart individual portion', price: 60, category: 'Viennoiserie', image: 'https://images.unsplash.com/photo-1543158181-e6f9f678121d?w=500&h=500&fit=crop', available: true },
 
-  // Sandwiches
-  {
-    name: 'Turkey & Cheese Sandwich',
-    description: 'Fresh turkey breast with swiss cheese and vegetables',
-    price: 450.00,
-    category: 'Sandwiches',
-    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.5,
-  },
-  {
-    name: 'Prosciutto & Mozzarella',
-    description: 'Italian cured ham with fresh mozzarella and basil',
-    price: 550.00,
-    category: 'Sandwiches',
-    image: '/images/prosciutto_sandwich.png',
-    available: true,
-    rating: 4.7,
-  },
-  {
-    name: 'Grilled Chicken Club',
-    description: 'Grilled chicken with bacon, lettuce, and tomato',
-    price: 500.00,
-    category: 'Sandwiches',
-    image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.6,
-  },
-  {
-    name: 'Caprese Sandwich',
-    description: 'Fresh tomato, mozzarella, basil, and balsamic vinegar',
-    price: 420.00,
-    category: 'Sandwiches',
-    image: 'https://images.unsplash.com/photo-1528735602780-cf17fef3a4be?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.4,
-  },
-  {
-    name: 'Roast Beef & Horseradish',
-    description: 'Tender roast beef with horseradish cream sauce',
-    price: 600.00,
-    category: 'Sandwiches',
-    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.8,
-  },
+  // TARTS
+  { name: 'Lemon Tart', description: 'Zesty lemon curd in crisp shortcrust shell', price: 100, category: 'Tarts', image: '/images/lemon_tart.png', available: true },
+  { name: 'Pistachio Tart', description: 'Gourmet roasted pistachio cream in golden crust', price: 250, category: 'Tarts', image: '/images/pistachio_tart.png', available: true },
+  { name: 'Strawberry Basil Tart', description: 'Artisanal strawberry and basil fusion', price: 130, category: 'Tarts', image: 'https://images.unsplash.com/photo-1464305795204-6f5bdf7f81b1?w=500&h=500&fit=crop', available: true },
+  { name: 'Almond Cake Tart', description: 'Rustic almond cake base with pastry cream', price: 180, category: 'Tarts', image: 'https://images.unsplash.com/photo-1464305795204-6f5bdf7f81b1?w=500&h=500&fit=crop', available: true },
 
-  // Bread
-  {
-    name: 'Sourdough Loaf',
-    description: 'Artisan sourdough with perfect crust and tang',
-    price: 350.00,
-    category: 'Bread',
-    image: 'https://images.unsplash.com/photo-1559162617-51c7f5f5e78b?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.9,
-  },
-  {
-    name: 'Whole Wheat Bread',
-    description: 'Hearty whole wheat loaf rich in fiber',
-    price: 300.00,
-    category: 'Bread',
-    image: '/images/whole_wheat_bread.png',
-    available: true,
-    rating: 4.6,
-  },
-  {
-    name: 'Focaccia',
-    description: 'Italian flat bread with olive oil and rosemary',
-    price: 250.00,
-    category: 'Bread',
-    image: 'https://images.unsplash.com/photo-1596521307133-c0c9e19a05f5?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.7,
-  },
-  {
-    name: 'Multigrain Loaf',
-    description: 'Mix of grains and seeds for nutrition and taste',
-    price: 320.00,
-    category: 'Bread',
-    image: 'https://images.unsplash.com/photo-1585594545971-9cefada70a66?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.5,
-  },
-  {
-    name: 'Ciabatta Roll',
-    description: 'Chewy Italian roll perfect for sandwiches',
-    price: 180.00,
-    category: 'Bread',
-    image: 'https://images.unsplash.com/photo-1595854246482-f10dda510f21?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.4,
-  },
+  // CHOUX
+  { name: 'Hazelnut Paris - Brest', description: 'Classic choux with hazelnut praline', price: 180, category: 'Choux', image: 'https://images.unsplash.com/photo-1505394033313-442ed8fc442b?w=500&h=500&fit=crop', available: true },
+  { name: 'Pistachio Eclair', description: 'Elegant choux with pistachio pastry cream', price: 150, category: 'Choux', image: 'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=500&h=500&fit=crop', available: true },
+  { name: 'Dark Chocolate Eclair', description: 'Classic eclair with premium dark cocoa', price: 120, category: 'Choux', image: 'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=500&h=500&fit=crop', available: true },
+  { name: 'Raspberry Eclair', description: 'Fruity eclair with raspberry infusion', price: 120, category: 'Choux', image: 'https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=500&h=500&fit=crop', available: true },
 
-  // Beverages
-  {
-    name: 'Espresso',
-    description: 'Rich and bold single or double shot espresso',
-    price: 200.00,
-    category: 'Beverages',
-    image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.7,
-  },
-  {
-    name: 'Cappuccino',
-    description: 'Espresso with steamed milk and foam',
-    price: 250.00,
-    category: 'Beverages',
-    image: 'https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.8,
-  },
-  {
-    name: 'Iced Latte',
-    description: 'Cold espresso with milk served over ice',
-    price: 280.00,
-    category: 'Beverages',
-    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba53e20?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.6,
-  },
-  {
-    name: 'Mocha',
-    description: 'Espresso with chocolate and steamed milk',
-    price: 300.00,
-    category: 'Beverages',
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.9,
-  },
-  {
-    name: 'Fresh Orange Juice',
-    description: 'Freshly squeezed orange juice',
-    price: 220.00,
-    category: 'Beverages',
-    image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.5,
-  },
+  // SALADS
+  { name: 'Chicken Pesto Salad', description: 'Grilled chicken with basil pesto and fresh greens', price: 250, category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop', available: true },
+  { name: 'Peach & Goat Cheese Salad', description: 'Artisan salad with sweet peaches and tangy goat cheese', price: 250, category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop', available: true },
+  { name: 'Quinoa Salad', description: 'Protein-rich quinoa with mixed garden vegetables', price: 200, category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop', available: true },
+  { name: 'Chicken & Chili Honey', description: 'Sweet and spicy grilled chicken over seasonal greens', price: 220, category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop', available: true },
+  { name: 'Halloumi Salad', description: 'Grilled halloumi cheese with Mediterranean garnish', price: 240, category: 'Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&h=500&fit=crop', available: true },
 
-  // Viennoiserie
-  {
-    name: 'Brioche Bun',
-    description: 'Soft, buttery sweet bun perfect with breakfast',
-    price: 150.00,
-    category: 'Viennoiserie',
-    image: '/images/brioche_bun.png',
+  // INDIVIDUALS
+  { name: 'Chocolate Caramel', description: 'Decadent chocolate layers with sea salt caramel', price: 250, category: 'Individuals', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=500&fit=crop', available: true },
+  { name: 'Tiramisu Coffee Bean', description: 'Italian classic with rich espresso infusion', price: 120, category: 'Individuals', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=500&fit=crop', available: true },
+  { name: 'Royale', description: 'Our signature royal chocolate and hazelnut cake', price: 250, category: 'Individuals', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=500&fit=crop', available: true },
+  { name: 'Pistachio Fantasy', description: 'Exotic pistachio mousse with artisanal layers', price: 270, category: 'Individuals', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=500&fit=crop', available: true },
 
-    available: true,
-    rating: 4.6,
-  },
-  {
-    name: 'Cinnamon Roll',
-    description: 'Sweet spiral with cinnamon sugar filling',
-    price: 4.99,
-    category: 'Viennoiserie',
-    image: 'https://images.unsplash.com/photo-1596592211029-b8e5566f0b92?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.9,
-  },
-  {
-    name: 'Fruit Tart',
-    description: 'Pastry tart with custard and fresh seasonal fruits',
-    price: 6.99,
-    category: 'Viennoiserie',
-    image: 'https://images.unsplash.com/photo-1613949314800-dc4e5ad22f41?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.8,
-  },
+  // BEVERAGES
+  { name: 'Espresso', description: 'Rich Italian espresso', price: 70, category: 'Beverages', image: 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500&h=500&fit=crop', available: true },
+  { name: 'Macchiato', description: 'Espresso with frothy milk', price: 80, category: 'Beverages', image: 'https://images.unsplash.com/photo-1485182708500-e83c95c81bb6?w=500&h=500&fit=crop', available: true },
+  { name: 'Spanish Latte', description: 'Creamy and sweet coffee favorite', price: 120, category: 'Beverages', image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&h=500&fit=crop', available: true },
+  { name: 'Matcha Frappe', description: 'Blended ceremonial grade matcha', price: 140, category: 'Beverages', image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=500&h=500&fit=crop', available: true },
+  { name: 'Vimto Fusion', description: 'Signature artisanal mocktail', price: 150, category: 'Beverages', image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&h=500&fit=crop', available: true },
+  { name: 'Passion Fruit Smoothie', description: 'Tropical tangy passion fruit pulp', price: 120, category: 'Beverages', image: 'https://images.unsplash.com/photo-1589733901241-5e5da4bbefbb?w=500&h=500&fit=crop', available: true },
 
-  // Cakes (New Premium Category)
-  {
-    name: 'Midnight Navy Velvet Cake',
-    description: 'Rich dark cocoa layers with a hints of gold-flecked cream cheese frosting',
-    price: 45.00,
-    category: 'Cakes',
-    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop',
-    available: true,
-    rating: 5.0,
-    ingredients: ['Dutch Cocoa', 'Gold Sand', 'Vanilla Bean', 'Premium Butter'],
-    allergens: ['Dairy', 'Gluten']
-  },
-  {
-    name: 'Golden Artisan Cheesecake',
-    description: 'Creamy New York style cheesecake with a signature gold-honey glaze',
-    price: 38.00,
-    category: 'Cakes',
-    image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&h=500&fit=crop',
-    available: true,
-    rating: 4.9,
-    ingredients: ['Cream Cheese', 'Organic Honey', 'Digestive Base'],
-    allergens: ['Dairy', 'Gluten', 'Eggs']
-  }
+  // SANDWICHES
+  { name: 'Turkey & Cheddar Onions Loaf', description: 'Smoked turkey and caramelized onions in sourdough', price: 180, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop', available: true },
+  { name: 'Smoked Salmon Bagel', description: 'Gourmet bagel with premium salmon and cream cheese', price: 250, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=500&fit=crop', available: true },
+  { name: 'Bresaoia Truffle', description: 'Luxury cured beef with authentic truffle cream', price: 300, category: 'Sandwiches', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop', available: true }
 ];
 
 async function seedDatabase() {
   try {
-    // Connect to database
     await connectDB();
-
-    // Clear existing products
     await Product.deleteMany({});
     console.log('Cleared existing products');
 
-    // Insert sample products
     const createdProducts = await Product.insertMany(sampleProducts);
-    console.log(`${createdProducts.length} products created successfully`);
+    console.log(`${createdProducts.length} final artisan menu items created successfully`);
 
-    // Close connection
     await mongoose.connection.close();
     console.log('Database connection closed');
   } catch (error) {

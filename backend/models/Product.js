@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['Pastries', 'Sandwiches', 'Bread', 'Beverages', 'Viennoiserie', 'Cakes'],
+      enum: ['Viennoiserie', 'Tarts', 'Choux', 'Cakes', 'Individuals', 'Sandwiches', 'Bread', 'Salad', 'Beverages'],
       required: [true, 'Please provide product category'],
     },
     ingredients: {

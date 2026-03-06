@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles/CategoryFilter.css';
 
-const CATEGORIES = ['Pastries', 'Sandwiches', 'Bread', 'Beverages', 'Viennoiserie'];
+const CATEGORIES = ['Viennoiserie', 'Tarts', 'Choux', 'Cakes', 'Individuals', 'Sandwiches', 'Bread', 'Salad', 'Beverages'];
 
 export default function CategoryFilter({ selectedCategory, onCategoryChange }) {
   return (

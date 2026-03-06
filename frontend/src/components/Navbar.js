@@ -11,9 +11,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          🍞 Tino and Friends
-        </Link>
+        <span className="navbar-logo">
+          Tino & friends
+        </span>
 
         <div className="navbar-menu">
           <Link to="/">Home</Link>

@@ -19,46 +19,48 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="features">
-        <div className="feature-card">
-          <div className="feature-icon">🥐</div>
-          <h3>Fresh Daily</h3>
-          <p>Baked fresh every morning with the finest ingredients</p>
-        </div>
-        <div className="feature-card">
-          <div className="feature-icon">🎨</div>
-          <h3>Artisan Quality</h3>
-          <p>Traditional recipes combined with modern techniques</p>
-        </div>
-        <div className="feature-card">
-          <div className="feature-icon">⚡</div>
-          <h3>Quick Delivery</h3>
-          <p>Fast and reliable delivery to your doorstep</p>
-        </div>
-        <div className="feature-card">
-          <div className="feature-icon">💳</div>
-          <h3>Secure Payment</h3>
-          <p>Safe checkout with Stripe credit card payments</p>
-        </div>
+        {[
+          { title: 'Fresh Daily', text: 'Baked fresh every morning with the finest ingredients', image: '/images/features/fresh_daily.png', emoji: '🥐' },
+          { title: 'Artisan Quality', text: 'Traditional recipes combined with modern techniques', image: '/images/features/artisan_quality.png', emoji: '🎨' },
+          { title: 'Quick Delivery', text: 'Fast and reliable delivery to your doorstep', image: '/images/features/quick_delivery.png', emoji: '⚡' }
+        ].map((feature) => (
+          <div key={feature.title} className="feature-card">
+            <div
+              className="feature-image"
+              style={{ backgroundImage: `url(${feature.image})` }}
+            >
+              {!feature.image && <div className="feature-icon">{feature.emoji}</div>}
+            </div>
+            <div className="feature-content">
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+            </div>
+          </div>
+        ))}
       </section>
 
-      {/* Categories Section */}
       <section className="categories">
         <h2>Our Specialties</h2>
         <div className="category-grid">
-          {['Pastries', 'Sandwiches', 'Bread', 'Beverages', 'Viennoiserie'].map(
-            (category) => (
-              <Link key={category} to={`/menu?category=${category}`} className="category-card">
-                <div className="category-icon">
-                  {category === 'Pastries' && '🥐'}
-                  {category === 'Sandwiches' && '🥪'}
-                  {category === 'Bread' && '🍞'}
-                  {category === 'Beverages' && '☕'}
-                  {category === 'Viennoiserie' && '🧁'}
-                </div>
-                <h3>{category}</h3>
-              </Link>
-            )
-          )}
+          {[
+            { name: 'Viennoiserie', image: '/images/categories/viennoiserie.png', emoji: '🧁' },
+            { name: 'Sandwiches', image: '/images/categories/sandwiches.png', emoji: '🥪' },
+            { name: 'Bread', image: '/images/categories/bread.png', emoji: '🍞' },
+            { name: 'Beverages', image: '/images/categories/beverages.png', emoji: '☕' },
+            { name: 'Salad', image: '/images/categories/salad.png', emoji: '🥗' }
+          ].map((cat) => (
+            <Link key={cat.name} to={`/menu?category=${cat.name}`} className="category-card">
+              <div
+                className="category-image"
+                style={{ backgroundImage: `url(${cat.image})` }}
+              >
+                {!cat.image && <span className="fallback-emoji">{cat.emoji}</span>}
+              </div>
+              <div className="category-overlay">
+                <h3>{cat.name}</h3>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 

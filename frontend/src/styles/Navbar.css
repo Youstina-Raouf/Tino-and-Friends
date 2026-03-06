@@ -23,15 +23,17 @@
 }
 
 .navbar-logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: var(--accent-color);
   text-decoration: none;
-  transition: transform 0.3s ease;
+  cursor: default;
+  transition: none;
+  letter-spacing: 1px;
 }
 
 .navbar-logo:hover {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .navbar-menu {
