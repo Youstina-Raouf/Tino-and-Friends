@@ -25,10 +25,15 @@ export default function Footer() {
         </div>
 
         <div className="footer-section">
-          <h3>Contact</h3>
+          <h3>Contact & Hours</h3>
           <p>Email: info@tinoandfriendsb.com</p>
           <p>Phone: (555) 123-4567</p>
           <p>Address: 123 Bakery Lane, Flavor Town, ST 12345</p>
+          <div style={{ marginTop: '10px' }}>
+            <p><strong>Mon - Fri:</strong> 7:00 AM - 7:00 PM</p>
+            <p><strong>Saturday:</strong> 8:00 AM - 8:00 PM</p>
+            <p><strong>Sunday:</strong> 8:00 AM - 5:00 PM</p>
+          </div>
         </div>
 
         <div className="footer-section">

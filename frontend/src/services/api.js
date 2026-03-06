@@ -90,6 +90,13 @@ export const orderService = {
 
   verifyPayment: (sessionId) =>
     API.post('/orders/payment/verify', { sessionId }),
+
+  // Admin order endpoints
+  getAllOrders: () =>
+    API.get('/orders'),
+
+  updateOrderStatus: (id, orderStatus) =>
+    API.put(`/orders/${id}/status`, { orderStatus }),
 };
 
 export default API;
