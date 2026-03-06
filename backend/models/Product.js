@@ -26,6 +26,11 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide product image URL'],
     },
+    stockQuantity: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
     available: {
       type: Boolean,
       default: true,

@@ -2,70 +2,79 @@
 const User = require('../models/User');
 const { getSignedJwtToken } = require('../middleware/auth');
 
-// Register user
-exports.register = async (req, res, next) => {
+// Function to generate a 6-digit OTP
+const generateOTP = () => {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
+// Request OTP (Acts as both register and login initiation)
+exports.requestOtp = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    const { phone, name, email } = req.body;
 
-    // Validate required fields
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Please provide all required fields' });
+    if (!phone) {
+      return res.status(400).json({ message: 'Please provide a phone number' });
     }
 
-    // Check if user already exists
-    let user = await User.findOne({ email });
-    if (user) {
-      return res.status(400).json({ message: 'User already exists' });
+    let user = await User.findOne({ phone });
+
+    // Auto-register if user doesn't exist
+    if (!user) {
+      user = await User.create({
+        phone,
+        name: name || 'Valued Customer',
+        email: email || undefined
+      });
     }
 
-    // Create user
-    user = await User.create({
-      name,
-      email,
-      password,
-    });
+    // Generate OTP
+    const otp = generateOTP();
+    user.otp = otp;
+    user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes from now
 
-    // Get token
-    const token = getSignedJwtToken(user._id);
+    await user.save();
 
-    res.status(201).json({
+    // Mock SMS sending (In production, replace with Twilio etc.)
+    console.log(`[Twilio Mock] Sending OTP ${otp} to phone ${phone}`);
+
+    res.status(200).json({
       success: true,
-      message: 'User registered successfully',
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+      message: 'OTP sent successfully',
     });
   } catch (error) {
     next(error);
   }
 };
 
-// Login user
-exports.login = async (req, res, next) => {
+// Verify OTP
+exports.verifyOtp = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { phone, otp } = req.body;
 
-    // Validate email and password
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Please provide email and password' });
+    if (!phone || !otp) {
+      return res.status(400).json({ message: 'Please provide phone and OTP' });
     }
 
-    // Check for user (include password field)
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ phone }).select('+otp +otpExpires');
 
     if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    // Check if password matches
-    const isMatch = await user.matchPassword(password);
+    if (!user.otp || !user.otpExpires || user.otpExpires < Date.now()) {
+      return res.status(400).json({ message: 'OTP is missing or expired' });
+    }
+
+    const isMatch = await user.verifyOtp(otp);
 
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid OTP' });
     }
+
+    // Clear OTP after successful login
+    user.otp = undefined;
+    user.otpExpires = undefined;
+    await user.save();
 
     // Get token
     const token = getSignedJwtToken(user._id);
@@ -77,7 +86,9 @@ exports.login = async (req, res, next) => {
       user: {
         id: user._id,
         name: user.name,
+        phone: user.phone,
         email: user.email,
+        role: user.role,
       },
     });
   } catch (error) {
