@@ -40,6 +40,8 @@ exports.requestOtp = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: 'OTP sent successfully',
+      // Include OTP in response ONLY in development for easier testing
+      devOtp: process.env.NODE_ENV === 'development' ? otp : undefined
     });
   } catch (error) {
     next(error);

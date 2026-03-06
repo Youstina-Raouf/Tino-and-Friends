@@ -18,6 +18,7 @@ router.use(protect);
 router.post('/', createOrder);
 router.get('/user', getUserOrders);
 router.get('/:id', getOrder);
+router.put('/:id/cancel', require('../controllers/orderController').cancelOrder);
 
 // Payment routes
 router.post('/payment/create-checkout-session', createCheckoutSession);

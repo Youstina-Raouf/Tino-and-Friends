@@ -1,8 +1,8 @@
 /* Checkout Page Styles */
 .checkout-page {
   min-height: 100vh;
-  background: #faf8f3;
-  padding: 2rem;
+  background: var(--primary-bg);
+  padding: 4rem 2rem;
 }
 
 .checkout-container {
@@ -22,16 +22,18 @@
 }
 
 .checkout-form-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(7, 28, 44, 0.05);
+  border: 1px solid rgba(219, 199, 158, 0.2);
 }
 
 .checkout-form-section h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
+  color: var(--secondary-bg);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .form-group {
@@ -47,16 +49,17 @@
 
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  padding: 0.8rem;
+  border: 1.5px solid #e1d8c1;
+  border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #d4a574;
+  border-color: var(--secondary-bg);
+  box-shadow: 0 0 10px rgba(7, 28, 44, 0.05);
 }
 
 .form-row {
@@ -67,19 +70,22 @@
 
 .submit-btn {
   width: 100%;
-  padding: 1rem;
-  background: #c41e3a;
-  color: white;
+  padding: 1.1rem;
+  background: var(--secondary-bg);
+  color: var(--accent-color);
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 4px;
+  font-weight: 800;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #a01830;
+  background: var(--accent-color);
+  color: var(--secondary-bg);
 }
 
 .submit-btn:disabled {
@@ -89,19 +95,18 @@
 
 /* Order Summary */
 .order-summary {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-  position: sticky;
-  top: 100px;
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(7, 28, 44, 0.08);
+  border: 1px solid rgba(219, 199, 158, 0.2);
 }
 
 .order-summary h2 {
-  color: #333;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  color: var(--secondary-bg);
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .summary-items {
@@ -153,8 +158,8 @@
 }
 
 .summary-total.final span:last-child {
-  color: #c41e3a;
-  font-size: 1.3rem;
+  color: var(--secondary-bg);
+  font-size: 1.5rem;
 }
 
 .back-to-cart {

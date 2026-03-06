@@ -37,16 +37,16 @@ const sampleProducts = [
   {
     name: 'Almond Croissant',
     description: 'Croissant topped with sliced almonds and cream',
-    price: 6.99,
+    price: 350.00,
     category: 'Pastries',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop',
+    image: '/images/almond_croissant.png',
     available: true,
     rating: 4.7,
   },
   {
     name: 'Éclair',
     description: 'Chocolate-covered choux pastry filled with cream',
-    price: 5.99,
+    price: 300.00,
     category: 'Pastries',
     image: 'https://images.unsplash.com/photo-1571326491601-6d0c5f69b0d2?w=500&h=500&fit=crop',
     available: true,
@@ -57,7 +57,7 @@ const sampleProducts = [
   {
     name: 'Turkey & Cheese Sandwich',
     description: 'Fresh turkey breast with swiss cheese and vegetables',
-    price: 8.99,
+    price: 450.00,
     category: 'Sandwiches',
     image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop',
     available: true,
@@ -66,16 +66,16 @@ const sampleProducts = [
   {
     name: 'Prosciutto & Mozzarella',
     description: 'Italian cured ham with fresh mozzarella and basil',
-    price: 10.99,
+    price: 550.00,
     category: 'Sandwiches',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop',
+    image: '/images/prosciutto_sandwich.png',
     available: true,
     rating: 4.7,
   },
   {
     name: 'Grilled Chicken Club',
     description: 'Grilled chicken with bacon, lettuce, and tomato',
-    price: 9.99,
+    price: 500.00,
     category: 'Sandwiches',
     image: 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=500&h=500&fit=crop',
     available: true,
@@ -84,7 +84,7 @@ const sampleProducts = [
   {
     name: 'Caprese Sandwich',
     description: 'Fresh tomato, mozzarella, basil, and balsamic vinegar',
-    price: 8.49,
+    price: 420.00,
     category: 'Sandwiches',
     image: 'https://images.unsplash.com/photo-1528735602780-cf17fef3a4be?w=500&h=500&fit=crop',
     available: true,
@@ -93,7 +93,7 @@ const sampleProducts = [
   {
     name: 'Roast Beef & Horseradish',
     description: 'Tender roast beef with horseradish cream sauce',
-    price: 11.99,
+    price: 600.00,
     category: 'Sandwiches',
     image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&h=500&fit=crop',
     available: true,
@@ -104,7 +104,7 @@ const sampleProducts = [
   {
     name: 'Sourdough Loaf',
     description: 'Artisan sourdough with perfect crust and tang',
-    price: 6.99,
+    price: 350.00,
     category: 'Bread',
     image: 'https://images.unsplash.com/photo-1559162617-51c7f5f5e78b?w=500&h=500&fit=crop',
     available: true,
@@ -113,16 +113,16 @@ const sampleProducts = [
   {
     name: 'Whole Wheat Bread',
     description: 'Hearty whole wheat loaf rich in fiber',
-    price: 5.99,
+    price: 300.00,
     category: 'Bread',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop',
+    image: '/images/whole_wheat_bread.png',
     available: true,
     rating: 4.6,
   },
   {
     name: 'Focaccia',
     description: 'Italian flat bread with olive oil and rosemary',
-    price: 4.99,
+    price: 250.00,
     category: 'Bread',
     image: 'https://images.unsplash.com/photo-1596521307133-c0c9e19a05f5?w=500&h=500&fit=crop',
     available: true,
@@ -131,7 +131,7 @@ const sampleProducts = [
   {
     name: 'Multigrain Loaf',
     description: 'Mix of grains and seeds for nutrition and taste',
-    price: 6.49,
+    price: 320.00,
     category: 'Bread',
     image: 'https://images.unsplash.com/photo-1585594545971-9cefada70a66?w=500&h=500&fit=crop',
     available: true,
@@ -140,7 +140,7 @@ const sampleProducts = [
   {
     name: 'Ciabatta Roll',
     description: 'Chewy Italian roll perfect for sandwiches',
-    price: 3.49,
+    price: 180.00,
     category: 'Bread',
     image: 'https://images.unsplash.com/photo-1595854246482-f10dda510f21?w=500&h=500&fit=crop',
     available: true,
@@ -151,7 +151,7 @@ const sampleProducts = [
   {
     name: 'Espresso',
     description: 'Rich and bold single or double shot espresso',
-    price: 3.99,
+    price: 200.00,
     category: 'Beverages',
     image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&h=500&fit=crop',
     available: true,
@@ -160,7 +160,7 @@ const sampleProducts = [
   {
     name: 'Cappuccino',
     description: 'Espresso with steamed milk and foam',
-    price: 4.99,
+    price: 250.00,
     category: 'Beverages',
     image: 'https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=500&h=500&fit=crop',
     available: true,
@@ -169,7 +169,7 @@ const sampleProducts = [
   {
     name: 'Iced Latte',
     description: 'Cold espresso with milk served over ice',
-    price: 5.49,
+    price: 280.00,
     category: 'Beverages',
     image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba53e20?w=500&h=500&fit=crop',
     available: true,
@@ -178,7 +178,7 @@ const sampleProducts = [
   {
     name: 'Mocha',
     description: 'Espresso with chocolate and steamed milk',
-    price: 5.99,
+    price: 300.00,
     category: 'Beverages',
     image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&h=500&fit=crop',
     available: true,
@@ -187,7 +187,7 @@ const sampleProducts = [
   {
     name: 'Fresh Orange Juice',
     description: 'Freshly squeezed orange juice',
-    price: 4.49,
+    price: 220.00,
     category: 'Beverages',
     image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&h=500&fit=crop',
     available: true,
@@ -198,9 +198,10 @@ const sampleProducts = [
   {
     name: 'Brioche Bun',
     description: 'Soft, buttery sweet bun perfect with breakfast',
-    price: 2.99,
+    price: 150.00,
     category: 'Viennoiserie',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop',
+    image: '/images/brioche_bun.png',
+
     available: true,
     rating: 4.6,
   },
@@ -222,24 +223,30 @@ const sampleProducts = [
     available: true,
     rating: 4.8,
   },
+
+  // Cakes (New Premium Category)
   {
-    name: 'Muffin',
-    description: 'Chocolate chip or berry muffin, moist and delicious',
-    price: 3.99,
-    category: 'Viennoiserie',
-    image: 'https://images.unsplash.com/photo-1618569022181-b6300747ae11?w=500&h=500&fit=crop',
+    name: 'Midnight Navy Velvet Cake',
+    description: 'Rich dark cocoa layers with a hints of gold-flecked cream cheese frosting',
+    price: 45.00,
+    category: 'Cakes',
+    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop',
     available: true,
-    rating: 4.5,
+    rating: 5.0,
+    ingredients: ['Dutch Cocoa', 'Gold Sand', 'Vanilla Bean', 'Premium Butter'],
+    allergens: ['Dairy', 'Gluten']
   },
   {
-    name: 'Donut',
-    description: 'Glazed donut or with sprinkles and fillings',
-    price: 3.49,
-    category: 'Viennoiserie',
-    image: 'https://images.unsplash.com/photo-1612080567532-9c14c0c06d94?w=500&h=500&fit=crop',
+    name: 'Golden Artisan Cheesecake',
+    description: 'Creamy New York style cheesecake with a signature gold-honey glaze',
+    price: 38.00,
+    category: 'Cakes',
+    image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&h=500&fit=crop',
     available: true,
-    rating: 4.7,
-  },
+    rating: 4.9,
+    ingredients: ['Cream Cheese', 'Organic Honey', 'Digestive Base'],
+    allergens: ['Dairy', 'Gluten', 'Eggs']
+  }
 ];
 
 async function seedDatabase() {

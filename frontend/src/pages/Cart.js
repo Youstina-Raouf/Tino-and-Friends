@@ -42,22 +42,22 @@ export default function Cart() {
             <div className="summary-details">
               <div className="summary-row">
                 <span>Subtotal:</span>
-                <span>${getCartTotal().toFixed(2)}</span>
+                <span>{getCartTotal().toFixed(2)} EGP</span>
               </div>
               <div className="summary-row">
                 <span>Shipping:</span>
-                <span>$5.00</span>
+                <span>5.00 EGP</span>
               </div>
               <div className="summary-row">
                 <span>Tax:</span>
-                <span>${(getCartTotal() * 0.08).toFixed(2)}</span>
+                <span>{(getCartTotal() * 0.08).toFixed(2)} EGP</span>
               </div>
 
               <div className="summary-divider"></div>
 
               <div className="summary-row total">
                 <span>Total:</span>
-                <span>${(getCartTotal() + 5 + getCartTotal() * 0.08).toFixed(2)}</span>
+                <span>{(getCartTotal() + 5 + getCartTotal() * 0.08).toFixed(2)} EGP</span>
               </div>
             </div>
 

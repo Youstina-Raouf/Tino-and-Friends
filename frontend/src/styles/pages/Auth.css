@@ -1,11 +1,13 @@
 /* Auth Pages Styles */
 .auth-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
+  background: var(--secondary-bg);
+  /* Navy Blue */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  border-bottom: 5px solid var(--accent-color);
 }
 
 .auth-container {
@@ -14,16 +16,17 @@
 }
 
 .auth-box {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
 .auth-box h1 {
-  color: #333;
+  color: var(--secondary-bg);
   margin-bottom: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
 }
 
 .auth-box p {
@@ -53,56 +56,51 @@
 
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  padding: 0.8rem;
+  border: 1.5px solid #e1d8c1;
+  border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #d4a574;
-  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+  border-color: var(--secondary-bg);
+  box-shadow: 0 0 10px rgba(7, 28, 44, 0.05);
 }
 
 .submit-btn {
   width: 100%;
-  padding: 0.875rem;
-  background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
-  color: white;
+  padding: 1rem;
+  background: var(--secondary-bg);
+  color: var(--accent-color);
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--secondary-bg);
 }
 
 .submit-btn:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.auth-footer {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: #666;
+  background: var(--accent-color);
+  color: var(--secondary-bg);
 }
 
 .auth-link {
-  color: #d4a574;
+  color: var(--secondary-bg);
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--accent-color);
 }
 
 .auth-link:hover {
-  color: #8b6f47;
+  background: var(--accent-color);
+  color: var(--secondary-bg);
 }
 
 @media (max-width: 480px) {

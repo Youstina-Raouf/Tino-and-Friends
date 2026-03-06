@@ -49,18 +49,31 @@ exports.createOrder = async (req, res, next) => {
       products: orderProducts,
       totalPrice,
       shippingAddress,
+      pickupTime: req.body.pickupTime,
+      customInstructions: req.body.customInstructions,
       paymentStatus: 'pending',
       orderStatus: 'pending',
     });
 
-    // Add order to user's order history
-    await User.findByIdAndUpdate(userId, {
-      $push: { orderHistory: order._id },
-    });
+    // Add order to user's order history and add loyalty points
+    const userUpdate = await User.findById(userId);
+    userUpdate.orderHistory.push(order._id);
+
+    // Loyalty Points Logic: 10 points per order
+    userUpdate.loyaltyPoints += 10;
+    let loyaltyMessage = '';
+
+    if (userUpdate.loyaltyPoints >= 100) {
+      userUpdate.loyaltyPoints -= 100; // Redeem points
+      loyaltyMessage = ' Congratulations! You have unlocked a discount for your next purchase. (SMS Notification Sent)';
+      console.log(`[MOCK SMS API] To: ${userUpdate.phone} - You have reached 100 points! Enjoy a free coffee on us next visit!`);
+    }
+
+    await userUpdate.save();
 
     res.status(201).json({
       success: true,
-      message: 'Order created successfully',
+      message: 'Order created successfully.' + loyaltyMessage,
       order,
     });
   } catch (error) {
@@ -107,6 +120,47 @@ exports.getOrder = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
+      data: order,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Cancel an order (for users)
+exports.cancelOrder = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const order = await Order.findById(id);
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    if (order.userId.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Not authorized to cancel this order' });
+    }
+
+    if (order.orderStatus !== 'pending') {
+      return res.status(400).json({ message: 'Only pending orders can be cancelled' });
+    }
+
+    // Restore stock
+    for (const item of order.products) {
+      const product = await Product.findById(item.productId);
+      if (product) {
+        product.stockQuantity += item.quantity;
+        product.available = true;
+        await product.save();
+      }
+    }
+
+    order.orderStatus = 'cancelled';
+    await order.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Order cancelled successfully',
       data: order,
     });
   } catch (error) {

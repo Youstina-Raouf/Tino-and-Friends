@@ -13,6 +13,8 @@ export default function Checkout() {
     state: '',
     zipCode: '',
     country: '',
+    pickupTime: '',
+    customInstructions: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -69,7 +71,9 @@ export default function Checkout() {
           productId: item._id,
           quantity: item.quantity,
         })),
-        formData
+        { street: formData.street, city: formData.city, state: formData.state, zipCode: formData.zipCode, country: formData.country },
+        formData.pickupTime,
+        formData.customInstructions
       );
 
       // Create Stripe session
@@ -78,7 +82,9 @@ export default function Checkout() {
           productId: item._id,
           quantity: item.quantity,
         })),
-        formData
+        { street: formData.street, city: formData.city, state: formData.state, zipCode: formData.zipCode, country: formData.country },
+        formData.pickupTime,
+        formData.customInstructions
       );
 
       // Redirect to Stripe checkout
@@ -171,6 +177,29 @@ export default function Checkout() {
                 </div>
               </div>
 
+              <h2 style={{ marginTop: '2rem' }}>Order Details</h2>
+              <div className="form-group">
+                <label htmlFor="pickupTime">Pickup / Delivery Time Request (Optional)</label>
+                <input
+                  type="datetime-local"
+                  id="pickupTime"
+                  name="pickupTime"
+                  value={formData.pickupTime}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="customInstructions">Custom Instructions (Cake Design, Allergies, etc.)</label>
+                <textarea
+                  id="customInstructions"
+                  name="customInstructions"
+                  value={formData.customInstructions}
+                  onChange={handleChange}
+                  rows="3"
+                ></textarea>
+              </div>
+
               <h2 style={{ marginTop: '2rem' }}>Payment Information</h2>
               <p style={{ color: '#666', marginBottom: '1rem' }}>
                 You will be redirected to Stripe to complete your payment securely.
@@ -193,7 +222,7 @@ export default function Checkout() {
                     <h4>{item.name}</h4>
                     <p>Qty: {item.quantity}</p>
                   </div>
-                  <span>${(item.price * item.quantity).toFixed(2)}</span>
+                  <span>{(item.price * item.quantity).toFixed(2)} EGP</span>
                 </div>
               ))}
             </div>
@@ -202,24 +231,24 @@ export default function Checkout() {
 
             <div className="summary-total">
               <span>Subtotal:</span>
-              <span>${getCartTotal().toFixed(2)}</span>
+              <span>{getCartTotal().toFixed(2)} EGP</span>
             </div>
 
             <div className="summary-total">
               <span>Shipping:</span>
-              <span>$5.00</span>
+              <span>5.00 EGP</span>
             </div>
 
             <div className="summary-total">
               <span>Tax:</span>
-              <span>${(getCartTotal() * 0.08).toFixed(2)}</span>
+              <span>{(getCartTotal() * 0.08).toFixed(2)} EGP</span>
             </div>
 
             <div className="summary-divider"></div>
 
             <div className="summary-total final">
               <span>Total:</span>
-              <span>${(getCartTotal() + 5 + getCartTotal() * 0.08).toFixed(2)}</span>
+              <span>{(getCartTotal() + 5 + getCartTotal() * 0.08).toFixed(2)} EGP</span>
             </div>
 
             <Link to="/cart" className="back-to-cart">

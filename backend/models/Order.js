@@ -51,6 +51,12 @@ const orderSchema = new mongoose.Schema(
       zipCode: String,
       country: String,
     },
+    pickupTime: {
+      type: String,
+    },
+    customInstructions: {
+      type: String,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
