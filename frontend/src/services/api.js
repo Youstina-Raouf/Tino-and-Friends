@@ -19,11 +19,11 @@ API.interceptors.request.use(
 
 // Auth Services
 export const authService = {
-  register: (name, email, password) =>
-    API.post('/auth/register', { name, email, password }),
+  requestOtp: (phone, name, email) =>
+    API.post('/auth/request-otp', { phone, name, email }),
 
-  login: (email, password) =>
-    API.post('/auth/login', { email, password }),
+  verifyOtp: (phone, otp) =>
+    API.post('/auth/verify-otp', { phone, otp }),
 
   getProfile: () =>
     API.get('/auth/profile'),
@@ -54,6 +54,9 @@ export const productService = {
 
   deleteProduct: (id) =>
     API.delete(`/products/${id}`),
+
+  updateStock: (id, quantity) =>
+    API.put(`/products/${id}/stock`, { quantity }),
 };
 
 // Favorites Services

@@ -25,6 +25,10 @@ exports.createOrder = async (req, res, next) => {
         return res.status(404).json({ message: `Product ${item.productId} not found` });
       }
 
+      if (product.stockQuantity < item.quantity) {
+        return res.status(400).json({ message: `Not enough stock for ${product.name}` });
+      }
+
       const itemTotal = product.price * item.quantity;
       totalPrice += itemTotal;
 
@@ -33,6 +37,10 @@ exports.createOrder = async (req, res, next) => {
         quantity: item.quantity,
         price: product.price,
       });
+
+      product.stockQuantity -= item.quantity;
+      product.available = product.stockQuantity > 0;
+      await product.save();
     }
 
     // Create order

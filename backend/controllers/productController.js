@@ -145,3 +145,34 @@ exports.searchProducts = async (req, res, next) => {
     next(error);
   }
 };
+
+// Update product stock (for POS / Cashier sync)
+exports.updateStock = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { quantity } = req.body;
+
+    if (quantity === undefined) {
+      return res.status(400).json({ message: 'Please provide stock quantity' });
+    }
+
+    const product = await Product.findById(id);
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    product.stockQuantity = quantity;
+    product.available = quantity > 0;
+
+    await product.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Stock updated successfully',
+      data: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

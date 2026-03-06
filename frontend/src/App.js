@@ -12,6 +12,7 @@ import Favorites from './pages/Favorites';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Checkout from './pages/Checkout';
+import AdminDashboard from './pages/AdminDashboard';
 
 // Import Components
 import Navbar from './components/Navbar';
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/admin" element={<AdminDashboard />} />
               </Routes>
             </Elements>
           </main>

@@ -6,12 +6,17 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Please provide a name'],
       trim: true,
+      default: 'Valued Customer',
+    },
+    phone: {
+      type: String,
+      required: [true, 'Please provide a phone number'],
+      unique: true,
     },
     email: {
       type: String,
-      required: [true, 'Please provide an email'],
+      sparse: true,
       unique: true,
       lowercase: true,
       match: [
@@ -19,11 +24,17 @@ const userSchema = new mongoose.Schema(
         'Please provide a valid email',
       ],
     },
-    password: {
+    role: {
       type: String,
-      required: [true, 'Please provide a password'],
-      minlength: 6,
-      select: false, // Don't return password by default
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
+    otp: {
+      type: String,
+      select: false,
+    },
+    otpExpires: {
+      type: Date,
     },
     favorites: [
       {
@@ -45,19 +56,20 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Hash password before saving
+// Hash OTP before saving
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next();
+  if (!this.isModified('otp') || !this.otp) {
+    return next();
   }
-
   const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  this.otp = await bcrypt.hash(this.otp, salt);
+  next();
 });
 
-// Method to compare passwords
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
+// Method to verify OTP
+userSchema.methods.verifyOtp = async function (enteredOtp) {
+  if (!this.otp) return false;
+  return await bcrypt.compare(enteredOtp, this.otp);
 };
 
 module.exports = mongoose.model('User', userSchema);
