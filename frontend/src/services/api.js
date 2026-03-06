@@ -73,8 +73,8 @@ export const favoritesService = {
 
 // Order Services
 export const orderService = {
-  createOrder: (products, shippingAddress) =>
-    API.post('/orders', { products, shippingAddress }),
+  createOrder: (products, shippingAddress, pickupTime, customInstructions) =>
+    API.post('/orders', { products, shippingAddress, pickupTime, customInstructions }),
 
   getUserOrders: () =>
     API.get('/orders/user'),
@@ -82,10 +82,15 @@ export const orderService = {
   getOrder: (id) =>
     API.get(`/orders/${id}`),
 
-  createCheckoutSession: (products, shippingAddress) =>
+  cancelOrder: (id) =>
+    API.put(`/orders/${id}/cancel`),
+
+  createCheckoutSession: (products, shippingAddress, pickupTime, customInstructions) =>
     API.post('/orders/payment/create-checkout-session', {
       products,
       shippingAddress,
+      pickupTime,
+      customInstructions,
     }),
 
   verifyPayment: (sessionId) =>

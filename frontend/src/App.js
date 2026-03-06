@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import Checkout from './pages/Checkout';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
+import ProductDetails from './pages/ProductDetails';
 
 // Import Components
 import Navbar from './components/Navbar';
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
               </Routes>
             </Elements>
           </main>

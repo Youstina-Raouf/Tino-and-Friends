@@ -14,7 +14,7 @@ export default function CartItem({ item }) {
       <div className="cart-item-details">
         <h4>{item.name}</h4>
         <p className="category">{item.category}</p>
-        <span className="price">${item.price.toFixed(2)}</span>
+        <span className="price">{item.price.toFixed(2)} EGP</span>
       </div>
 
       <div className="cart-item-quantity">
@@ -28,7 +28,7 @@ export default function CartItem({ item }) {
       </div>
 
       <div className="cart-item-total">
-        <span>${(item.price * item.quantity).toFixed(2)}</span>
+        <span>{(item.price * item.quantity).toFixed(2)} EGP</span>
       </div>
 
       <button

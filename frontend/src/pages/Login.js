@@ -1,6 +1,6 @@
 // Login Page
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { authService } from '../services/api';
 import { useApp } from '../context/AppContext';
 import '../styles/pages/Auth.css';
@@ -8,6 +8,7 @@ import '../styles/pages/Auth.css';
 export default function Login() {
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
+  const [devOtp, setDevOtp] = useState('');
   const [step, setStep] = useState(1); // 1 = Request OTP, 2 = Verify OTP
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,10 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await authService.requestOtp(phone);
+      const response = await authService.requestOtp(phone);
+      if (response.data.devOtp) {
+        setDevOtp(response.data.devOtp);
+      }
       setStep(2);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to request OTP');
@@ -62,6 +66,12 @@ export default function Login() {
 
           {error && <div className="error-message">{error}</div>}
 
+          {devOtp && step === 2 && (
+            <div className="dev-otp-alert" style={{ background: '#EFE7D5', padding: '10px', borderRadius: '4px', marginBottom: '20px', border: '1px solid #DBC79E', color: '#071C2C', fontSize: '0.9rem' }}>
+              <strong>[Dev Mode]</strong> Your OTP is: <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>{devOtp}</span>
+            </div>
+          )}
+
           {step === 1 ? (
             <form onSubmit={handleRequestOtp}>
               <div className="form-group">
@@ -97,6 +107,14 @@ export default function Login() {
               </button>
             </form>
           )}
+          <div className="auth-footer" style={{ marginTop: '20px' }}>
+            <p>
+              Don't have an account?{' '}
+              <Link to="/register" className="auth-link">
+                Register
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

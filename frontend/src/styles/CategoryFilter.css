@@ -1,44 +1,52 @@
 /* CategoryFilter Styles */
 .category-filter {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(7, 28, 44, 0.05);
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(219, 199, 158, 0.2);
 }
 
 .category-filter h3 {
-  margin-bottom: 1.5rem;
-  color: #333;
-  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--secondary-bg);
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .category-buttons button {
-  padding: 0.75rem 1.25rem;
-  border: 2px solid #d4a574;
-  background: white;
-  color: #333;
-  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  border: 1.5px solid var(--secondary-bg);
+  background: transparent;
+  color: var(--secondary-bg);
+  border-radius: 4px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
 }
 
 .category-buttons button:hover {
-  background: #d4a574;
-  color: white;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--secondary-bg);
 }
 
 .category-buttons button.active {
-  background: #8b6f47;
-  color: white;
-  border-color: #8b6f47;
+  background: var(--secondary-bg);
+  color: var(--accent-color);
+  border-color: var(--secondary-bg);
 }
 
 @media (max-width: 768px) {

@@ -1,5 +1,6 @@
 // Footer Component
 import React from 'react';
+import { FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi';
 import '../styles/Footer.css';
 
 export default function Footer() {
@@ -39,9 +40,9 @@ export default function Footer() {
         <div className="footer-section">
           <h3>Follow Us</h3>
           <div className="social-links">
-            <a href="#facebook">Facebook</a>
-            <a href="#instagram">Instagram</a>
-            <a href="#twitter">Twitter</a>
+            <a href="#facebook"><FiFacebook /> Facebook</a>
+            <a href="#instagram"><FiInstagram /> Instagram</a>
+            <a href="#twitter"><FiTwitter /> Twitter</a>
           </div>
         </div>
       </div>

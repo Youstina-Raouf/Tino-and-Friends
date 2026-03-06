@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema(
       enum: ['user', 'admin'],
       default: 'user',
     },
+    loyaltyPoints: {
+      type: Number,
+      default: 0,
+    },
     otp: {
       type: String,
       select: false,

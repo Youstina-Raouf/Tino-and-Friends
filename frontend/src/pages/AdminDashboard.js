@@ -8,8 +8,9 @@ export default function AdminDashboard() {
     const { user } = useApp();
     const navigate = useNavigate();
 
-    // Tabs: 'products' or 'orders'
+    // Tabs: 'products' or 'orders' or 'announcements'
     const [activeTab, setActiveTab] = useState('products');
+    const [showOnlyToday, setShowOnlyToday] = useState(false);
 
     // Data State
     const [products, setProducts] = useState([]);
@@ -110,34 +111,69 @@ export default function AdminDashboard() {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className="page-container" style={{ padding: '2rem' }}>
-            <h1>Admin Dashboard</h1>
+        <div className="page-container" style={{ padding: '4rem 2rem', background: 'var(--primary-bg)', minHeight: '100vh' }}>
+            <h1 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--secondary-bg)', fontSize: '2.5rem', marginBottom: '3rem' }}>Admin Dashboard</h1>
 
             {/* Tabs */}
-            <div style={{ display: 'flex', gap: '1rem', margin: '2rem 0', borderBottom: '2px solid #ddd', paddingBottom: '10px' }}>
+            <div style={{ display: 'flex', gap: '1rem', margin: '2rem 0', borderBottom: '2px solid rgba(7, 28, 44, 0.1)', paddingBottom: '1.5rem' }}>
                 <button
                     onClick={() => setActiveTab('products')}
-                    style={{ padding: '10px 20px', cursor: 'pointer', backgroundColor: activeTab === 'products' ? '#c41e3a' : '#f0f0f0', color: activeTab === 'products' ? 'white' : 'black', border: 'none', borderRadius: '4px' }}>
+                    style={{
+                        padding: '12px 24px',
+                        cursor: 'pointer',
+                        backgroundColor: activeTab === 'products' ? 'var(--secondary-bg)' : 'transparent',
+                        color: activeTab === 'products' ? 'var(--accent-color)' : 'var(--secondary-bg)',
+                        border: activeTab === 'products' ? 'none' : '1px solid var(--secondary-bg)',
+                        borderRadius: '4px',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    }}>
                     Manage Products
                 </button>
                 <button
                     onClick={() => setActiveTab('orders')}
-                    style={{ padding: '10px 20px', cursor: 'pointer', backgroundColor: activeTab === 'orders' ? '#c41e3a' : '#f0f0f0', color: activeTab === 'orders' ? 'white' : 'black', border: 'none', borderRadius: '4px' }}>
+                    style={{
+                        padding: '12px 24px',
+                        cursor: 'pointer',
+                        backgroundColor: activeTab === 'orders' ? 'var(--secondary-bg)' : 'transparent',
+                        color: activeTab === 'orders' ? 'var(--accent-color)' : 'var(--secondary-bg)',
+                        border: activeTab === 'orders' ? 'none' : '1px solid var(--secondary-bg)',
+                        borderRadius: '4px',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    }}>
                     Manage Orders
+                </button>
+                <button
+                    onClick={() => setActiveTab('announcements')}
+                    style={{
+                        padding: '12px 24px',
+                        cursor: 'pointer',
+                        backgroundColor: activeTab === 'announcements' ? 'var(--secondary-bg)' : 'transparent',
+                        color: activeTab === 'announcements' ? 'var(--accent-color)' : 'var(--secondary-bg)',
+                        border: activeTab === 'announcements' ? 'none' : '1px solid var(--secondary-bg)',
+                        borderRadius: '4px',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                    }}>
+                    Announcements
                 </button>
             </div>
 
             {/* Products Tab */}
             {activeTab === 'products' && (
-                <div>
-                    <h2>Inventory Management</h2>
+                <div style={{ backgroundColor: 'var(--white)', padding: '2.5rem', borderRadius: '4px', boxShadow: '0 10px 40px rgba(7,28,44,0.05)', border: '1px solid rgba(219,199,158,0.2)' }}>
+                    <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--secondary-bg)', marginBottom: '2rem' }}>Inventory Management</h2>
                     <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
                         <thead>
-                            <tr style={{ borderBottom: '2px solid #ddd', textAlign: 'left' }}>
-                                <th>Image URL</th>
-                                <th>Product Details</th>
-                                <th>Stock Actions</th>
-                                <th>Admin Actions</th>
+                            <tr style={{ borderBottom: '2px solid var(--secondary-bg)', textAlign: 'left', color: 'var(--secondary-bg)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                <th style={{ paddingBottom: '1rem' }}>Image</th>
+                                <th style={{ paddingBottom: '1rem' }}>Product Details</th>
+                                <th style={{ paddingBottom: '1rem' }}>Stock</th>
+                                <th style={{ paddingBottom: '1rem' }}>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -164,7 +200,7 @@ export default function AdminDashboard() {
                                             <td>
                                                 <strong>{product.name}</strong><br />
                                                 <small>{product.description}</small><br />
-                                                ${product.price.toFixed(2)} | {product.category}
+                                                {product.price.toFixed(2)} EGP | {product.category}
                                             </td>
                                             <td>
                                                 Quantity: {product.stockQuantity || 0} <br />
@@ -184,22 +220,27 @@ export default function AdminDashboard() {
                 </div>
             )}
 
-            {/* Orders Tab */}
             {activeTab === 'orders' && (
-                <div>
-                    <h2>Order Tracking</h2>
+                <div style={{ backgroundColor: 'var(--white)', padding: '2.5rem', borderRadius: '4px', boxShadow: '0 10px 40px rgba(7,28,44,0.05)', border: '1px solid rgba(219,199,158,0.2)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                        <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--secondary-bg)', margin: 0 }}>Order Tracking</h2>
+                        <label style={{ color: 'var(--secondary-bg)', fontWeight: 700, cursor: 'pointer' }}>
+                            <input type="checkbox" checked={showOnlyToday} onChange={e => setShowOnlyToday(e.target.checked)} style={{ marginRight: '10px' }} />
+                            View Today's Orders Only
+                        </label>
+                    </div>
                     <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
                         <thead>
-                            <tr style={{ borderBottom: '2px solid #ddd', textAlign: 'left' }}>
-                                <th>Order ID / Date</th>
-                                <th>Customer Info</th>
-                                <th>Items Ordered</th>
-                                <th>Amount / Status</th>
-                                <th>Update Status</th>
+                            <tr style={{ borderBottom: '2px solid var(--secondary-bg)', textAlign: 'left', color: 'var(--secondary-bg)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                <th style={{ paddingBottom: '1rem' }}>ID / Date</th>
+                                <th style={{ paddingBottom: '1rem' }}>Customer</th>
+                                <th style={{ paddingBottom: '1rem' }}>Items</th>
+                                <th style={{ paddingBottom: '1rem' }}>Amount / Status</th>
+                                <th style={{ paddingBottom: '1rem' }}>Update</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map(order => (
+                            {orders.filter(o => !showOnlyToday || new Date(o.createdAt).toDateString() === new Date().toDateString()).map(order => (
                                 <tr key={order._id} style={{ borderBottom: '1px solid #ddd' }}>
                                     <td style={{ padding: '10px 0' }}>
                                         <small>{order._id}</small><br />
@@ -217,7 +258,7 @@ export default function AdminDashboard() {
                                         </ul>
                                     </td>
                                     <td>
-                                        <strong>${order.totalPrice?.toFixed(2) || '0.00'}</strong><br />
+                                        <strong>{order.totalPrice?.toFixed(2) || '0.00'} EGP</strong><br />
                                         <span style={{
                                             padding: '3px 8px', borderRadius: '12px', fontSize: '12px', color: 'white',
                                             backgroundColor: order.orderStatus === 'completed' || order.orderStatus === 'delivered' ? 'green' : (order.orderStatus === 'cancelled' ? 'red' : 'orange')
@@ -241,6 +282,31 @@ export default function AdminDashboard() {
                             ))}
                         </tbody>
                     </table>
+                </div>
+            )}
+
+            {/* Announcements Tab */}
+            {activeTab === 'announcements' && (
+                <div style={{ backgroundColor: 'var(--white)', padding: '3rem', borderRadius: '4px', boxShadow: '0 10px 40px rgba(7,28,44,0.05)', border: '1px solid rgba(219,199,158,0.2)' }}>
+                    <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--secondary-bg)', marginBottom: '1.5rem' }}>Send SMS Announcement</h2>
+                    <p style={{ color: '#666', marginBottom: '2rem', fontSize: '1.1rem' }}>Broadcast a premium promotional message to all registered friends of Tino.</p>
+                    <textarea
+                        id="sms-text"
+                        rows="5"
+                        placeholder="Enter your announcement here..."
+                        style={{ width: '100%', padding: '1.5rem', marginBottom: '2rem', borderRadius: '4px', border: '1.5px solid #e1d8c1', fontSize: '1rem', fontFamily: 'Inter, sans-serif' }}
+                    ></textarea>
+                    <button
+                        onClick={() => {
+                            const txt = document.getElementById('sms-text').value;
+                            if (txt) {
+                                alert('SMS Broadcast simulated successfully! Premium announcement sent.');
+                                document.getElementById('sms-text').value = '';
+                            }
+                        }}
+                        style={{ padding: '1rem 3rem', backgroundColor: 'var(--secondary-bg)', color: 'var(--accent-color)', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        Send Premium Announcement
+                    </button>
                 </div>
             )}
 
