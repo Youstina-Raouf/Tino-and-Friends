@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Checkout from './pages/Checkout';
 import AdminDashboard from './pages/AdminDashboard';
+import Profile from './pages/Profile';
 
 // Import Components
 import Navbar from './components/Navbar';
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/profile" element={<Profile />} />
               </Routes>
             </Elements>
           </main>

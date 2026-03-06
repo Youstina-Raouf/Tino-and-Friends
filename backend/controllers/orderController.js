@@ -214,3 +214,52 @@ exports.verifyPayment = async (req, res, next) => {
     next(error);
   }
 };
+
+// Admin: Get all orders
+exports.getAllOrders = async (req, res, next) => {
+  try {
+    const orders = await Order.find()
+      .populate('userId', 'name email phone')
+      .populate('products.productId', 'name')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: orders.length,
+      data: orders,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Admin: Update order status
+exports.updateOrderStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { orderStatus } = req.body;
+
+    const validStatuses = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
+    if (!validStatuses.includes(orderStatus)) {
+      return res.status(400).json({ message: 'Invalid order status' });
+    }
+
+    const order = await Order.findByIdAndUpdate(
+      id,
+      { orderStatus },
+      { new: true, runValidators: true }
+    );
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Order status updated',
+      data: order,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
