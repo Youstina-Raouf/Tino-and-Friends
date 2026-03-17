@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Lora:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +11,7 @@
 }
 
 body {
+<<<<<<< HEAD
   font-family: 'Playfair Display', serif; /* Elegant heading font */
   background-color: #EFE7D5; /* 60% Luxury Cream */
   color: #071C2C; /* Navy for text */
@@ -16,12 +19,20 @@ body {
 
 p, span, div, input, textarea {
   font-family: 'Inter', sans-serif; /* Clean body font */
+=======
+  font-family: 'Lora', Georgia, serif;
+  background-color: #faf5f0;
+  color: #5a4a42;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+<<<<<<< HEAD
 /* Premium Bakery Theme Colors (60-30-10 Rule) */
 :root {
   --primary-bg: #EFE7D5;  /* 60% Cream */
@@ -30,4 +41,27 @@ html {
   --text-dark: #071C2C;
   --text-light: #EFE7D5;
   --white: #ffffff;
+=======
+/* Warm, Cozy Logo-Inspired Palette */
+:root {
+  --primary-dark: #6b5344;     /* warm brown */
+  --primary-color: #d4a589;    /* warm peach-tan */
+  --secondary-color: #c8956f;  /* rust-brown */
+  --accent-color: #d98556;     /* warm salmon/rust */
+  --light-bg: #faf5f0;         /* cream */
+  --card-bg: #fff8f4;          /* warm white */
+  --border-color: #e8d9ce;     /* warm border */
+  --dark-text: #5a4a42;        /* warm dark text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--primary-dark);
+}
+
+a {
+  transition: all 0.3s ease;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }

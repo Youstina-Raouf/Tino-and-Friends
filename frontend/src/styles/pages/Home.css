@@ -1,10 +1,11 @@
-/* Home Page Styles */
+/* Home Page Styles - Warm & Cozy */
 .home {
   min-height: 100vh;
 }
 
 /* Hero Section */
 .hero {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   /* Navy Blue */
   color: var(--text-light);
@@ -19,17 +20,54 @@
   margin-bottom: 1.5rem;
   font-family: 'Playfair Display', serif;
   letter-spacing: -1px;
+=======
+  color: white;
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  border-bottom: 4px solid var(--primary-color);
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.hero-content {
+  width: 100%;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
+}
+
+
 .hero-content p {
+<<<<<<< HEAD
   font-size: 1.4rem;
   margin-bottom: 3rem;
   opacity: 0.9;
   letter-spacing: 0.5px;
+=======
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.98;
+  letter-spacing: 0.3px;
+  font-weight: 300;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .cta-button {
   display: inline-block;
+<<<<<<< HEAD
   padding: 1.1rem 3rem;
   background: var(--accent-color);
   /* Gold Pop */
@@ -47,10 +85,29 @@
 .cta-button:hover {
   background: transparent;
   color: var(--accent-color);
+=======
+  padding: 1rem 2.8rem;
+  background: var(--primary-color);
+  color: var(--primary-dark);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.cta-button:hover {
+  background: var(--primary-dark);
+  color: var(--primary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .cta-button.secondary {
   background: transparent;
+<<<<<<< HEAD
   color: var(--accent-color);
   border-color: var(--accent-color);
   margin-left: 1rem;
@@ -59,21 +116,47 @@
 .cta-button.secondary:hover {
   background: var(--accent-color);
   color: var(--secondary-bg);
+=======
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+  background: var(--primary-color);
+  color: var(--primary-dark);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 /* Features Section */
 .features {
+<<<<<<< HEAD
   max-width: 1200px;
   margin: -6rem auto 4rem;
   padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+=======
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 4rem 2rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
   position: relative;
   z-index: 10;
+  text-align: center;
+}
+
+.features h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .feature-card {
+<<<<<<< HEAD
   background: var(--white);
   border-radius: 8px;
   overflow: hidden;
@@ -98,6 +181,20 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.6s ease;
+=======
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(107, 83, 68, 0.1);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--primary-color);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(107, 83, 68, 0.15);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .feature-icon {
@@ -114,9 +211,15 @@
 
 .feature-card h3 {
   margin-bottom: 0.5rem;
+<<<<<<< HEAD
   color: var(--secondary-bg);
   font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
+=======
+  color: var(--primary-dark);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .feature-card p {
@@ -134,10 +237,19 @@
 }
 
 .categories h2 {
+<<<<<<< HEAD
   font-size: 3rem;
   margin-bottom: 4rem;
   color: var(--secondary-bg);
   font-family: 'Playfair Display', serif;
+=======
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .category-grid {
@@ -147,6 +259,7 @@
 }
 
 .category-card {
+<<<<<<< HEAD
   position: relative;
   height: 300px;
   border-radius: 8px;
@@ -171,6 +284,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+=======
+  background: linear-gradient(135deg, #8b6f55 0%, #6b5344 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(107, 83, 68, 0.15);
+  border: 2px solid var(--primary-color);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(212, 165, 137, 0.2);
+  border-color: var(--accent-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .fallback-emoji {
@@ -203,15 +332,23 @@
 }
 
 .category-card h3 {
+<<<<<<< HEAD
   font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin: 0;
+=======
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 /* CTA Section */
 .cta-section {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   color: var(--text-light);
   padding: 6rem 2rem;
@@ -232,6 +369,28 @@
   color: var(--text-light);
   opacity: 0.8;
   margin-bottom: 3rem;
+=======
+  background: var(--primary-dark);
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 4px solid var(--primary-color);
+  border-bottom: 4px solid var(--primary-color);
+}
+
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 @media (max-width: 768px) {

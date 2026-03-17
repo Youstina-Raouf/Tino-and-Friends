@@ -1,5 +1,6 @@
-/* Navbar Styles */
+/* Navbar Styles - Warm & Cozy */
 .navbar {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   /* Navy Blue */
   color: var(--text-light);
@@ -11,18 +12,29 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   border-bottom: 2px solid var(--accent-color);
   /* Gold border */
+=======
+  background: var(--primary-dark);
+  color: white;
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid var(--primary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .navbar-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .navbar-logo {
+<<<<<<< HEAD
   font-family: 'Great Vibes', cursive;
   font-size: 2.2rem;
   color: var(--accent-color);
@@ -34,28 +46,69 @@
 
 .navbar-logo:hover {
   transform: none;
+=======
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.navbar-logo img {
+  height: 45px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.navbar-logo:hover {
+  color: white;
+  text-shadow: 0 2px 8px rgba(212, 165, 137, 0.3);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .navbar-menu {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .navbar-menu a {
+<<<<<<< HEAD
   color: var(--text-light);
   text-decoration: none;
   font-weight: 600;
+=======
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+<<<<<<< HEAD
   letter-spacing: 0.5px;
 }
 
 .navbar-menu a:hover {
   color: var(--accent-color);
+=======
+  position: relative;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.3rem;
+}
+
+.navbar-menu a:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .cart-link {
@@ -66,7 +119,7 @@
   position: absolute;
   top: -8px;
   right: -12px;
-  background: #c41e3a;
+  background: var(--accent-color);
   color: white;
   border-radius: 50%;
   width: 20px;
@@ -76,6 +129,7 @@
   justify-content: center;
   font-size: 0.75rem;
   font-weight: bold;
+  border: 2px solid var(--primary-dark);
 }
 
 .badge {

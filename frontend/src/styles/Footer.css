@@ -1,5 +1,6 @@
-/* Footer Styles */
+/* Footer Styles - Warm & Cozy */
 .footer {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   /* Navy Blue */
   color: var(--text-light);
@@ -8,6 +9,13 @@
   margin-top: 4rem;
   border-top: 5px solid var(--accent-color);
   /* Gold prominent line */
+=======
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 4rem 0 1rem;
+  margin-top: 4rem;
+  border-top: 4px solid var(--primary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .footer-container {
@@ -21,20 +29,35 @@
 }
 
 .footer-section h3 {
+<<<<<<< HEAD
   color: var(--accent-color);
   /* Gold */
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+=======
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .footer-section p {
   line-height: 1.8;
+<<<<<<< HEAD
   color: var(--text-light);
   margin-bottom: 0.75rem;
   font-size: 1rem;
   opacity: 0.9;
+=======
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .footer-section ul {
@@ -46,14 +69,23 @@
 }
 
 .footer-section a {
+<<<<<<< HEAD
   color: var(--accent-color);
+=======
+  color: var(--primary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .footer-section a:hover {
+<<<<<<< HEAD
   color: var(--white);
   padding-left: 5px;
+=======
+  color: white;
+  text-shadow: 0 0 8px rgba(201, 169, 97, 0.3);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .social-links {
@@ -71,10 +103,16 @@
 
 .footer-bottom {
   text-align: center;
+<<<<<<< HEAD
   border-top: 1px solid rgba(219, 199, 158, 0.2);
   /* Gold subtle divider */
   padding-top: 2rem;
   color: var(--accent-color);
+=======
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
   font-size: 0.9rem;
   opacity: 0.7;
 }

@@ -11,9 +11,16 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+<<<<<<< HEAD
         <span className="navbar-logo">
           Tino & friends
         </span>
+=======
+        <Link to="/" className="navbar-logo">
+          <img src="/assets/logo.png" alt="Tino and Friends Logo" /> 
+          Tino and Friends
+        </Link>
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 
         <div className="navbar-menu">
           <Link to="/">Home</Link>

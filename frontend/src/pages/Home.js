@@ -2,12 +2,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/pages/Home.css';
+import HoverRevealCards from '../components/HoverRevealCards';
 
 export default function Home() {
+  const heroStyle = {
+    backgroundImage: `linear-gradient(rgba(107, 83, 68, 0.65), rgba(107, 83, 68, 0.65)), url('${process.env.PUBLIC_URL}/assets/logo.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+    backgroundRepeat: 'no-repeat',
+  };
+
+  const featureItems = [
+    {
+      id: 1,
+      icon: '🥐',
+      title: 'Fresh Daily',
+      subtitle: 'Baked Fresh',
+    },
+    {
+      id: 2,
+      icon: '🎨',
+      title: 'Artisan Quality',
+      subtitle: 'Premium Recipes',
+    },
+    {
+      id: 3,
+      icon: '⚡',
+      title: 'Quick Delivery',
+      subtitle: 'Fast & Reliable',
+    },
+  ];
+
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" style={heroStyle}>
         <div className="hero-content">
           <h1>Welcome to Tino and Friends</h1>
           <p>Artisan Bakery - Crafted with Love & Premium Ingredients</p>

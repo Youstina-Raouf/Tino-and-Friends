@@ -1,9 +1,14 @@
-/* Menu Page Styles */
+/* Menu Page Styles - Classic */
 .menu-page {
   min-height: 100vh;
+<<<<<<< HEAD
   background: var(--primary-bg);
   /* Luxury Cream */
   padding: 4rem 0;
+=======
+  background: var(--light-bg);
+  padding: 2rem 0;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .menu-container {
@@ -18,6 +23,7 @@
 
 .search-bar input {
   width: 100%;
+<<<<<<< HEAD
   max-width: 600px;
   padding: 1rem 1.5rem;
   border: 2px solid var(--secondary-bg);
@@ -26,12 +32,29 @@
   transition: all 0.3s ease;
   background: var(--white);
   color: var(--secondary-bg);
+=======
+  max-width: 500px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: 'Lora', Georgia, serif;
+}
+
+.search-bar input::placeholder {
+  color: #999;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .search-bar input:focus {
   outline: none;
+<<<<<<< HEAD
   border-color: var(--accent-color);
   box-shadow: 0 0 10px rgba(219, 199, 158, 0.3);
+=======
+  border-color: var(--secondary-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .menu-content {
@@ -55,6 +78,7 @@
 }
 
 .results-header h2 {
+<<<<<<< HEAD
   font-size: 3rem;
   color: var(--secondary-bg);
   margin-bottom: 0.5rem;
@@ -65,6 +89,18 @@
   color: var(--secondary-bg);
   font-size: 1.1rem;
   opacity: 0.7;
+=======
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.results-header p {
+  color: #999;
+  font-size: 0.95rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .products {

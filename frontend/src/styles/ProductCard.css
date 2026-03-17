@@ -1,5 +1,6 @@
-/* ProductCard Styles */
+/* ProductCard Styles - Warm & Cozy */
 .product-card {
+<<<<<<< HEAD
   background: var(--white);
   border-radius: 4px;
   /* Premium sharp feel */
@@ -17,6 +18,21 @@
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(7, 28, 44, 0.12);
   border-color: var(--accent-color);
+=======
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 15px rgba(107, 83, 68, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(107, 83, 68, 0.15);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .product-image-container {
@@ -42,7 +58,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(107, 83, 68, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +74,7 @@
 .favorite-btn,
 .add-to-cart-btn {
   background: white;
-  border: none;
+  border: 2px solid var(--primary-color);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -67,16 +83,24 @@
   justify-content: center;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: all 0.3s ease;
+  color: var(--primary-color);
 }
 
 .favorite-btn:hover {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   color: var(--accent-color);
+=======
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
   transform: scale(1.1);
 }
 
 .add-to-cart-btn {
+<<<<<<< HEAD
   background: var(--secondary-bg);
   color: var(--accent-color);
   gap: 0.5rem;
@@ -85,11 +109,27 @@
   border-radius: 4px;
   font-weight: 700;
   border: 1px solid var(--accent-color);
+=======
+  background: var(--primary-dark);
+  color: white;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  width: auto;
+  border-color: var(--primary-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .add-to-cart-btn:hover {
   background: var(--accent-color);
+<<<<<<< HEAD
   color: var(--secondary-bg);
+=======
+  border-color: var(--accent-color);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .product-info {
@@ -97,6 +137,7 @@
 }
 
 .product-info h3 {
+<<<<<<< HEAD
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: var(--secondary-bg);
@@ -110,6 +151,23 @@
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+=======
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.product-info .category {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .product-info .description {

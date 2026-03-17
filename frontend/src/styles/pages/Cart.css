@@ -1,9 +1,14 @@
-/* Cart Page Styles */
+/* Cart Page Styles - Classic */
 .cart-page {
   min-height: 100vh;
+<<<<<<< HEAD
   background: var(--primary-bg);
   /* Cream Background */
   padding: 4rem 2rem;
+=======
+  background: var(--light-bg);
+  padding: 2rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .cart-container {
@@ -12,6 +17,7 @@
 }
 
 .cart-container h1 {
+<<<<<<< HEAD
   margin-bottom: 3rem;
   color: var(--secondary-bg);
   font-family: 'Playfair Display', serif;
@@ -24,10 +30,39 @@
   border-radius: 4px;
   text-align: center;
   box-shadow: 0 4px 25px rgba(7, 28, 44, 0.05);
+=======
+  margin-bottom: 2rem;
+  color: var(--primary-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.empty-cart {
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(107, 83, 68, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.empty-cart h2 {
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+}
+
+.empty-cart p {
+  color: #999;
+  margin-bottom: 2rem;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .continue-shopping {
   display: inline-block;
+<<<<<<< HEAD
   padding: 1rem 2rem;
   background: var(--secondary-bg);
   color: var(--accent-color);
@@ -42,6 +77,23 @@
 .continue-shopping:hover {
   background: var(--accent-color);
   color: var(--secondary-bg);
+=======
+  padding: 0.75rem 1.8rem;
+  background: var(--primary-dark);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--primary-dark);
+}
+
+.continue-shopping:hover {
+  background: var(--primary-color);
+  color: var(--primary-dark);
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .cart-content {
@@ -56,6 +108,7 @@
 }
 
 .cart-summary {
+<<<<<<< HEAD
   background: var(--white);
   padding: 2.5rem;
   border-radius: 4px;
@@ -68,6 +121,52 @@
   margin-bottom: 2rem;
   font-size: 1.6rem;
   font-family: 'Playfair Display', serif;
+=======
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(107, 83, 68, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  border: 1px solid var(--border-color);
+}
+
+.cart-summary h2 {
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.summary-details {
+  margin-bottom: 1.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+}
+
+.summary-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 1rem 0;
+}
+
+.summary-row.total {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+>>>>>>> a3ecc2f (added background logo and enhanced some Cards)
 }
 
 .summary-row.total span:last-child {
